@@ -3,18 +3,10 @@ version: 2.1
 # Orchestrate or schedule a set of jobs
 jobs:
   print_hello:
-<<<<<<< HEAD
     docker: 
       - image: circleci/node:13.8.0
     steps:
       - run: echo "hello"
-=======
-    build:
-      docker:
-        - image: circleci/node:13.8.0
-      steps:
-        - run: echo "hello"
->>>>>>> 677bd353429ffc966d9a03e8cdc6569463633e39
   print_world:
     docker: circleci/node:13.8.0
     steps:
