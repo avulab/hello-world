@@ -14,15 +14,9 @@ jobs:
       - run: echo "world"
   print_name:
     docker:
-<<<<<<< HEAD
       - image: circleci/node:13.8.0
     steps:
       - run: echo $Person
-=======
-        - image: circleci/node:13.8.0
-    steps:
-        - run: echo $PERSON 
->>>>>>> 0d9ebead5480d6106c7f6a15e3f57c0de02d3156
 workflows:
   # Name the workflow "welcome"
   welcome:
