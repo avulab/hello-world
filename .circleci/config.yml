@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   print_hello:
     build:
-      docker: 
+      docker:
         - image: circleci/node:13.8.0
       steps:
         - run: echo "hello"
@@ -19,7 +19,7 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - print_hello
-      - print_world
+      - print_world:
           requires:
             - print_hello
 
