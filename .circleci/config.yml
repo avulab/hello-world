@@ -2,13 +2,18 @@
 version: 2.1
 # Orchestrate or schedule a set of jobs
 commands:
-  print_pipeline_id_cmd:
-    description: "Print circleci workflow id"
-    steps:
-      - run: echo $CIRCLE_WORKFLOW_ID
-jobs:
   print_pipeline_id:
+    steps:
+      - run: echo "$CIRCLE_WORKFLOW_ID"
+jobs:
+  myjob:
     docker: 
       - image: circleci/node:13.8.0
     steps:
-      - print_pipleline_id_cmd:
+      - print_pipeline_id
+workflows:
+  # Name the workflow "welcome"
+  welcome:
+    # Run the welcome/run job in its own container
+    jobs:
+      - myjob
