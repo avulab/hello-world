@@ -10,8 +10,7 @@ jobs:
     docker: 
       - image: circleci/node:13.8.0
     steps:
-      - print_pipeline_id
-      - run: exit 1
+      - run: return 1
       - run:
           name: Error Handler
           command: echo "Hello Error!"
