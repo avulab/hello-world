@@ -12,8 +12,8 @@ jobs:
     steps:
       - run: aws ec2 describe-instances  --query 'Reservations[*].Instances[*].PublicIpAddress'  --filters "Name=tag:Name,Values=Balakrishna Avula" --output text >> /tmp/inventory
       - persist_to_workspace:
-          root: /tmp
-          path:
+          root: /home/circleci/project
+          paths:
               - inventory
 workflows:
   # Name the workflow "welcome"
