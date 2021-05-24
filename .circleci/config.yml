@@ -4,17 +4,17 @@ version: 2.1
 commands:
   print_pipeline_id:
     steps:
-      - run: echo "$CIRCLE_WORKFLOW_ID"
+      - run: echo "[all]" >/tmp/inventory
 jobs:
   myjob:
     docker: 
       - image: circleci/node:13.8.0
     steps:
-      - run: return 1
-      - run:
-          name: Error Handler
-          command: echo "Hello Error!"
-          when: on_fail
+      - run: aws ec2 describe-instances  --query 'Reservations[*].Instances[*].PublicIpAddress'  --filters "Name=tag:Name,Values=Balakrishna Avula" --output text >> /tmp/inventory
+      - persist_to_workspace:
+          root: /tmp
+          path:
+              - inventory
 workflows:
   # Name the workflow "welcome"
   welcome:
