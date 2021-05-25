@@ -8,7 +8,7 @@ commands:
 jobs:
   myjob:
     docker: 
-      - image: circleci/node:13.8.0
+      - image: amazon/aws-cli
     steps:
       - run: aws ec2 describe-instances  --query 'Reservations[*].Instances[*].PublicIpAddress'  --filters "Name=tag:Name,Values=Balakrishna Avula" --output text >> /tmp/inventory
       - persist_to_workspace:
