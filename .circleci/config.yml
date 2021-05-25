@@ -6,7 +6,7 @@ orbs:
 commands:
   print_pipeline_id:
     steps:
-      - run: echo "[all]" >/tmp/inventory
+      - run: echo "[all]" >inventory
 jobs:
   myjob:
     executor: aws-cli/default
@@ -14,7 +14,7 @@ jobs:
       - checkout
       - aws-cli/setup:
           profile-name: example
-      - run: aws ec2 describe-instances  --query 'Reservations[*].Instances[*].PublicIpAddress'  --filters "Name=tag:Name,Values=Balakrishna Avula" --output text >> /tmp/inventory
+      - run: aws ec2 describe-instances  --query 'Reservations[*].Instances[*].PublicIpAddress'  --filters "Name=tag:Name,Values=Balakrishna Avula" --output text >> inventory
       - persist_to_workspace:
           root: /home/circleci/project
           paths:
