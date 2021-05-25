@@ -19,6 +19,7 @@ jobs:
           root: /home/circleci/project
           paths:
               - inventory
+      - run: cat inventory
 workflows:
   # Name the workflow "welcome"
   welcome:
